@@ -28,7 +28,7 @@
 
     <!-- slf4j -->
     <!-- logback begin -->
-    <dependency>
+    <!--<dependency>
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
       <version>${logback.version}</version>
@@ -42,7 +42,7 @@
       <groupId>org.logback-extensions</groupId>
       <artifactId>logback-ext-spring</artifactId>
       <version>0.1.4</version>
-    </dependency>
+    </dependency>-->
 
     <!-- jstl jsp页面标签 -->
     <dependency>
