@@ -54,11 +54,11 @@
 	</bean>-->
 
 	<!-- 对静态资源的获取，如images文件夹下的图片。如果没有则访问不到 -->
-	<!--<mvc:resources mapping="/**" location="/" />-->
+	<mvc:resources mapping="/**" location="/s"/>
 
 	<!-- 视图解析器 -->
 	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/admin/view/"/>
+		<property name="prefix" value="/WEB-INF/view/admin/"/>
 		<property name="suffix" value=".jsp"/>
 		</bean>
 </beans>
