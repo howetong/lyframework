@@ -3,7 +3,7 @@
 <script type="text/javascript" src="<%=basePath%>s/assets/js/commons/index.js"></script>
 
 <script>
-    var app = TH.Util.app = new App();
+    var app = XY.Util.app = new App();
     app.init();
     app.contentPath = ""+"<%=basePath%>";
     app.mainPath = ""+"${mainPath}";

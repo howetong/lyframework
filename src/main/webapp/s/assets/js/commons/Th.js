@@ -47,14 +47,14 @@ Z = XY = Object(function(data){
 	}
 	return self;
 });
-Util = new Object();
+Util = {};
 XY.Util = Util;
 Util.isRTL = function () {
 	if ($('body').css('direction') === 'rtl') {
 		return true;
-	};
-	return false;
-}
+    }
+    return false;
+};
 // 类型判断
 XY.Util.getType = function (o) {
 	var _t;
@@ -127,7 +127,7 @@ Util.register = function(){
 				nameNs += '.';
 			}
 			nameNs += nameArr[i];
-			nameEval += 'if(typeof('+nameNs+')=="undefined"){'+nameNs+' = new '+objType+'();}'
+			nameEval += 'if(typeof('+nameNs+')=="undefined"){'+nameNs+' = new '+objType+'();}';
 			if(nameEval != ''){
 				eval(nameEval);
 			}
@@ -190,7 +190,7 @@ Util.register('XY','function',{
 			for(var p in styles){
 				el.style[p] = styles[p];
 			}
-		}
+		};
 		var els = arguments[0];
 		var styles = arguments[1];
 		var type = XY.Util.getType(els);
@@ -308,9 +308,9 @@ Util.register('XY.Util.Url','function',{
 		if(datas){
 			for(var p in datas){
 				data[p] = datas[p];
-			};
-		};
-		var jsondata = {};
+            }
+        }
+        var jsondata = {};
 		$.ajax({
 			type: type || "GET",
 			url: url,
@@ -353,7 +353,7 @@ Util.register('XY.Util','function',{
 			script.language="javascript";
 			script.src = file;
 			document.write(script.outerHTML);
-		}
+		};
 		var cssP = function(file){
 			var link = XY.Util.DOM('link');
 			link.type = "text/css";
@@ -361,7 +361,7 @@ Util.register('XY.Util','function',{
 			link.rel="stylesheet";
 			link.href = file;
 			document.write(link.outerHTML);
-		}
+		};
 		//判断文件类型并调用写入函数
 		var judge = function(f){
 			if(f.substring((f.length-3)) == '.js'){
@@ -369,7 +369,7 @@ Util.register('XY.Util','function',{
 			}else if(f.substring((f.length-3)) == 'css'){
 				cssP(f);
 			}
-		}
+		};
 		if(XY.Util.getType(file) == "Array" && file.length){
 			for(var i in file){
 				judge(file[i]);
@@ -772,7 +772,7 @@ Util.register('XY.Util','function',{
 					var date = Hours + ":" + Minutes;
 					return date;
 			}
-		}
+		};
 		return !type ? null : format[type] ? format[type]() : -1;
 	}
 });
@@ -792,7 +792,7 @@ Util.register('XY.Util','function',{
 				4:"周四",
 				5:"周五",
 				6:"周六"
-			}
+			};
 			var dom  = div;
 			
 			setInterval(function(){
@@ -811,7 +811,7 @@ Util.register('XY.Util','function',{
 				var Seconds = time.getSeconds();//秒
 				Seconds = (Seconds < 10 ? "0" + Seconds : Seconds);
 				var Milliseconds = time.getMilliseconds();//毫秒
-				var date = Year + "年" + Month + "月" + Day + "日 " + wk[week] + " " + Hours + ":" + Minutes + ":" + Seconds //+ ":" + Milliseconds;
+				var date = Year + "年" + Month + "月" + Day + "日 " + wk[week] + " " + Hours + ":" + Minutes + ":" + Seconds; //+ ":" + Milliseconds;
 				dom.innerText = date;
 			},1);
 		

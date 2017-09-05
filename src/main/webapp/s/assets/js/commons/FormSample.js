@@ -19,7 +19,7 @@ var FormSamples = function () {
 	var domtr = XY.Util.DOM.createTr; 
 	var requiredFn = function(required){
 		return (required === true ) ? "<font style='color:red;'>*必填</font>" : (required !== false) ? required : "";
-	}
+	};
 	var mainFormFieldIdTag;
 	var dialogClickFun = function(id,title,mainFormFieldId,columns,width,height){
 		$(id).click(function(e) {
@@ -79,7 +79,7 @@ var FormSamples = function () {
 			setFormFieldEls(columns,{act:""},formDom);
 		});
 		
-	}
+	};
 
 	var formEl = {
 		'label' : function(id,type,columnTitle,value,size,help,required,list,format,formSelectExp){
@@ -157,7 +157,7 @@ var FormSamples = function () {
 			// 提示信息
 			var helpSpan = domspan('help_'+id,"help-block help-inline col-xs-12 col-sm-8",help || "请输入IPV4格式的IP地址");
 			controls.appendChild(helpSpan);
-			$(input).ipAddress()
+			$(input).ipAddress();
 			return div;
 		},
 		'number' : function(id,type,columnTitle,value,size,help,required,list,format,formSelectExp){
@@ -279,7 +279,7 @@ var FormSamples = function () {
 					for (var i=0, l=nodes.length; i < l; i++) {
 						t.setChkDisabled(nodes[i], true,inheritParent,inheritChildren);
 					}
-				}
+				};
 				
 				if(list.notEdit === true){
 					setDisabled(t,nodes);
@@ -291,7 +291,7 @@ var FormSamples = function () {
 						
 					}
 				}
-			}
+			};
 			var treeRun = function(ztreeDiv,zNodes,url,value){
 				var t = $(ztreeDiv);
 				
@@ -417,7 +417,7 @@ var FormSamples = function () {
 						
 					}
 				}
-			}
+			};
 			
 			// 视图
 			var formGroup　= "form-group col-xs-12 col-sm-12";
@@ -507,7 +507,7 @@ var FormSamples = function () {
 					value = value.id;
 				var select = domselect(id,values,value,"chosen-select form-control",'请选择'+columnTitle);
 				selectDiv.appendChild(select);
-			}
+			};
 			if(list && list.ajaxUrl && list.ajaxUrl.match('^'+XY.Util.app.contentPath)){
 				var dataid = "?";
 				if(list.id === true){
@@ -516,11 +516,11 @@ var FormSamples = function () {
 					dataid += "id="+list.id;
 				}
 				if(list.parent != "undefined" && list.parent != null && XY.Util.getType(list.parent) == "boolean"){
-					var parent = "isParent="+list.parent
+					var parent = "isParent="+list.parent;
 					dataid += (dataid == "?" ? parent : "&"+parent);
 				}
 				if(list.parentid  && XY.Util.getType(list.parentid) == "number"){
-					var parentid = "parentid="+list.parentid
+					var parentid = "parentid="+list.parentid;
 					dataid += (dataid == "?" ? parentid : "&"+parentid);
 				}
 				$.ajax({
@@ -627,7 +627,7 @@ var FormSamples = function () {
 						}
 					}
 				}
-			}
+			};
 			if(list && list.ajaxUrl && list.ajaxUrl.match('^'+XY.Util.app.contentPath)){
 				var id;
 				if(list.id === true){
@@ -840,7 +840,7 @@ var FormSamples = function () {
 					}
 					
 				});
-			},100)
+			},100);
 			return div;
 		},
 		'button' : function(id,type,className,iconClass,text){
@@ -975,7 +975,7 @@ var FormSamples = function () {
 			// 取到form表单dom
 			var formDom = $('form',$(this.editBoxId));
 			if(formDom && formDom.length <= 0)
-				formDom = $('form',$('#edit'))
+				formDom = $('form',$('#edit'));
 			// 获取所有的内部元素
 			var formChild = formDom.children();
 			// 删除所有的元素
@@ -1020,7 +1020,7 @@ var FormSamples = function () {
 				var form = $('form',$(editBoxId));
 				form.attr('action',FormSamples.saveUrl);
 				var formData = form.serializeArray();
-				var data = {"cmd":form.attr('cmd')}
+				var data = {"cmd":form.attr('cmd')};
 				var table = FormSamples.table;
 				for(var i = 0; i < formData.length; i ++){
 					var keyVal = formData[i];
@@ -1050,7 +1050,7 @@ var FormSamples = function () {
 					data[p] = addobj[p];
 				}
 				return data;
-			}
+			};
 			// 点击保存按钮
 			$('#but-save',$(editBoxId)).click(function(e){
 				$.ajax({

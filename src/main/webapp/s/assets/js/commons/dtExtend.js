@@ -103,7 +103,7 @@
 			var options = {
 				backdrop : false,
 				keyboard : false
-			}
+			};
 			var self = {
 				saveUrl:url,
 				act : act||'new',
@@ -116,7 +116,7 @@
 				$('.title',$(modalId)).html((self.act === "new" ? title.replace('编辑','新建') : title));
 				$('form',$(modalId)).attr('cmd',self.act);
 				$(modalId).modal(options);
-			}
+			};
 			if(id > 0){
 				$.ajax({
 					"dataType":"json",
@@ -180,4 +180,4 @@
 			}, 500);
 		}
 	}
-})()
+})();

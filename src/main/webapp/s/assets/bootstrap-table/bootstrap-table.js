@@ -661,7 +661,7 @@
             $(this).find('th').each(function () {
                 // Fix #2014 - getFieldIndex and elsewhere assume this is string, causes issues if not
                 if (typeof $(this).data('field') !== 'undefined') {
-                    $(this).data('field', new String($(this).data('field')).valueOf()); 
+                    $(this).data('field', String($(this).data('field')).valueOf());
                 }
                 column.push($.extend({}, {
                     title: $(this).html(),

@@ -10,7 +10,7 @@ import java.util.List;
  * Created by howeTong on 2017/6/11 0011.
  */
 @MappedSuperclass
-public abstract class ParentChildrenBean<T> extends UserNewEditBean {
+public abstract class ParentChildrenBean<T> extends ResourceBean<T> {
     /**
      * 父类元素字段
      */

@@ -5,7 +5,7 @@ jQuery(function($){
 		$content.css({'padding-bottom':'2px'});
 	var app = XY.Util.app;
 	app.setBodyHeight($content);
-})
+});
 
 var App = function(){
 	var app = XY.Util.app;
@@ -20,7 +20,7 @@ var App = function(){
 		maxh -= $('#breadcrumbs').height();
 		mbody.css({'max-height':maxh - toleranceHeight});
 		return maxh;
-	}
+	};
 	
 	function ajaxStatus(){
 		$.ajaxSetup({
@@ -70,7 +70,7 @@ var App = function(){
 				//window.location.href = XY.Util.app.mainPath; 
 				//window.location.href = history.go(-1);
 			}
-		})
+		});
 		/**
 		 * 
 		 */
@@ -94,4 +94,4 @@ var App = function(){
 			ajaxStatus();
 		}
 	}
-}
+};
