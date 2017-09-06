@@ -1,5 +1,6 @@
 package cn.core.security.controller;
 
+import cn.core.annotation.AInitMenu;
 import cn.core.controller.CRUDController;
 import cn.core.security.domain.SysUser;
 import cn.core.security.service.ISysUserService;
@@ -14,6 +15,7 @@ import javax.annotation.Resource;
  */
 @Controller
 @RequestMapping("/admin/user")
+@AInitMenu(name="用户管理",type=1,path="/admin/user")
 public class SysUserController extends CRUDController<SysUser> {
 
     private ISysUserService service;
