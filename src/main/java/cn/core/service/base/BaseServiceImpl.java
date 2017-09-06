@@ -175,11 +175,9 @@ public class BaseServiceImpl implements IBaseSimpleService {
     }
 
     @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-    public <T extends BaseBean> List<KeyValueResult> finalKeyValueResults(
-            Long id, Map<String, String> fieldMap, List<Object> valueList,
+    public <T extends BaseBean> List<KeyValueResult> finalKeyValueResults(Long id, Map<String, String> fieldMap, List<Object> valueList,
             Class<T> entityClass) {
-        return this.dao.finalKeyValueResults(id, fieldMap, valueList,
-                entityClass);
+        return this.dao.finalKeyValueResults(id, fieldMap, valueList, entityClass);
     }
 
     public <T extends BaseBean> T merge(T entity) {
