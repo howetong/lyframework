@@ -2,9 +2,11 @@ package cn.core.security.component;
 
 import cn.core.annotation.AInitMenu;
 import cn.core.component.IinitSysInfo;
+import cn.core.domain.BaseBean;
 import cn.core.security.domain.SysMenu;
 import cn.core.security.service.ISysMenuService;
 import cn.core.service.base.IBaseService;
+import jdk.nashorn.internal.ir.BaseNode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -38,9 +40,9 @@ public class InitMenuInfo implements IinitSysInfo{
         //获取spring（子）容器中所有注解为@controller的Bean的名字
         String[] beanNames = context.getBeanNamesForAnnotation(Controller.class);
         for (String beanName : beanNames) {
-            //获取所有控制器的RequestMapping注解
+            //获取当前控制器的RequestMapping注解
             RequestMapping mapping = context.findAnnotationOnBean(beanName, RequestMapping.class);
-            //获取所有控制器的AInitMenu注解
+            //获取当前控制器的AInitMenu注解
             AInitMenu menu = context.findAnnotationOnBean(beanName, AInitMenu.class);
             if (menu == null) {
                 continue;
@@ -81,7 +83,9 @@ public class InitMenuInfo implements IinitSysInfo{
                 }
             }
             try {
+                //如果当前控制器的AInitMenu注解中path不为null和#
                 Object bean = context.getBean(beanName);
+                //根据参数类型和方法名获取当前controller的方法
                 Method m = bean.getClass().getMethod("doView", String.class);
                 if (m != null) {
                     if (!path.startsWith("/")) {
@@ -90,7 +94,7 @@ public class InitMenuInfo implements IinitSysInfo{
                     if (!path.endsWith("/")) {
                         path = path+"/";
                     }
-                    String url = "page" + path + "view.do";
+                    String url = "page" + path + "view";
                     createMenu(menu, url);
                 }
             } catch (NoSuchMethodException e) {
@@ -102,8 +106,7 @@ public class InitMenuInfo implements IinitSysInfo{
     }
 
     private void createMenu(AInitMenu annomenu, String path) {
-        if (null == annomenu
-                || null != menuService.getByProperties(BaseEntity.NAME_FIELD,
+        if (null == annomenu || null != menuService.getByProperties(BaseBean.NAME_FIELD,
                 annomenu.name(), SysMenu.class)) {
             return;
         }
@@ -114,10 +117,12 @@ public class InitMenuInfo implements IinitSysInfo{
         sysMenu.setCreateTime(new Date());
         if (annomenu.addParent()) {
             SysMenu pmenu = null;
+            //如果菜单拥有父菜单
             if (annomenu.parent() != null) {
-                pmenu = menuService.getByProerties(BaseEntity.NAME_FIELD,
-                        annomenu.parent(), SysMenu.class);
+                //获取父菜单
+                pmenu = menuService.getByProperties(BaseBean.NAME_FIELD, annomenu.parent(), SysMenu.class);
             }
+            //如果菜单没有父菜单（即本身就是顶级菜单）
             if (pmenu == null) {
                 pmenu = new SysMenu();
                 pmenu.setName(annomenu.parent());

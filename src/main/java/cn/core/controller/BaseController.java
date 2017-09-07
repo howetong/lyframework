@@ -173,8 +173,7 @@ public class BaseController<E extends BaseBean>{
      * 设置http页面默认视图模型
      */
     @RequestMapping(value="/view",method= RequestMethod.GET)
-    public ModelAndView doView(HttpServletRequest request, HttpServletResponse response,
-               @RequestParam(value = "v", required = false) String v){
+    public ModelAndView doView(@RequestParam(value = "v", required = false) String v){
         ModelAndView mv = new ModelAndView();
         beforeDefault(mv);
 		/*mv.addObject("user",getCurrentSysUser());*/

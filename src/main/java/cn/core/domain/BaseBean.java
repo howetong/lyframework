@@ -18,6 +18,11 @@ public abstract class BaseBean extends ExpandBaseParameter {
     public static final String ID_FIELD = "id";
 
     /**
+     * 名称字段,String型
+     */
+    public static final String NAME_FIELD = "name";
+
+    /**
      * 删除状态字段，boolean值
      */
     public static final String DEL_STATUS_FIELD = "delStatus";

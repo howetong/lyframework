@@ -11,7 +11,15 @@ import java.lang.annotation.*;
 @Inherited
 public @interface AInitMenu {
 
+    /**
+     * 菜单名称
+     */
     String name() default "新菜单";
+
+    /**
+     * 上级菜单名称
+     */
+    String parent() default "系统菜单";
 
     /**
      * 菜单类型
@@ -23,4 +31,9 @@ public @interface AInitMenu {
      * 菜单路径
      */
     String path() default "#";
+
+    /**
+     * 是否创建父菜单
+     */
+    boolean addParent() default true;
 }

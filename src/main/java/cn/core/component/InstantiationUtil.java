@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
+import org.springframework.stereotype.Component;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletContext;
@@ -16,6 +17,7 @@ import java.util.List;
  * spring容器初始化完成事件(ContextRefreshedEvent)监听器
  * Created by howeTong on 2017/9/6.
  */
+@Component
 public class InstantiationUtil implements ApplicationListener<ContextRefreshedEvent>{
 
     private static Logger logger = LoggerFactory.getLogger(InstantiationUtil.class);

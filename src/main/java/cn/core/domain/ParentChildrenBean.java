@@ -10,7 +10,7 @@ import java.util.List;
  * Created by howeTong on 2017/6/11 0011.
  */
 @MappedSuperclass
-public abstract class ParentChildrenBean<T> extends ResourceBean<T> {
+public abstract class ParentChildrenBean<T> extends UserNewEditBean {
     /**
      * 父类元素字段
      */
@@ -32,7 +32,17 @@ public abstract class ParentChildrenBean<T> extends ResourceBean<T> {
     public static final String LEAF_FIELD = "leaf";
 
     /**
-     * 父类
+     * 父菜单标识
+     */
+    private Boolean asParent;
+
+    /**
+     * 子菜单标识
+     */
+    private Boolean leaf;
+
+    /**
+     * 父类（对子菜单标识为真的菜单而言）
      */
     @ManyToOne(fetch= FetchType.LAZY)
     @JoinColumn(name="parent_id")
@@ -40,7 +50,7 @@ public abstract class ParentChildrenBean<T> extends ResourceBean<T> {
     private T parent;
 
     /**
-     * 子类
+     * 子类（对父菜单标识为真的菜单而言）
      */
     @OneToMany(mappedBy="parent",fetch=FetchType.LAZY)
     @JSONField(serialize=false)
@@ -72,5 +82,21 @@ public abstract class ParentChildrenBean<T> extends ResourceBean<T> {
 
     public void setChildren(List<T> children) {
         this.children = children;
+    }
+
+    public Boolean getAsParent() {
+        return asParent;
+    }
+
+    public void setAsParent(Boolean asParent) {
+        this.asParent = asParent;
+    }
+
+    public Boolean getLeaf() {
+        return leaf;
+    }
+
+    public void setLeaf(Boolean leaf) {
+        this.leaf = leaf;
     }
 }

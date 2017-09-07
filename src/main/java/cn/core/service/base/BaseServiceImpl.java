@@ -47,8 +47,7 @@ public class BaseServiceImpl implements IBaseSimpleService {
     }
 
     @Transactional(readOnly = true, propagation = Propagation.REQUIRED)
-    public <T extends BaseBean> T getByProperties(String propName,
-                                                  Object propValue, Class<T> entityClass) {
+    public <T extends BaseBean> T getByProperties(String propName, Object propValue, Class<T> entityClass) {
         return this.dao.getByProperties(propName, propValue, entityClass);
     }
 
