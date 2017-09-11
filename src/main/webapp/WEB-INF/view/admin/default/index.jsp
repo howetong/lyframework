@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<%@include file="../commons/commons.jsp" %>
+<%@include file="commons/commons.jsp" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -695,4 +695,4 @@
 <script src="<%=basePath%>s/assets/js/ace/ace.widget-on-reload.js"></script>
 <script src="<%=basePath%>s/assets/js/ace/ace.searchbox-autocomplete.js"></script>
 
-<%@include file="../commons/include.jsp" %>
+<%@include file="commons/include.jsp" %>
