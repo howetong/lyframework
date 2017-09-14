@@ -81,12 +81,12 @@ public abstract class BaseBean extends ExpandBaseParameter {
     /**
      * 状态，true表示正常
      */
-    private boolean status = true;
+    private Integer status = 1;
     /**
-     * 状态删除，true表示删除
+     * 状态删除，1表示删除
      */
     @JSONField(serialize = false)
-    private boolean delStatus = false;
+    private Integer delStatus = 0;
     /**
      * 编号
      */
@@ -155,19 +155,19 @@ public abstract class BaseBean extends ExpandBaseParameter {
         this.updateTime = updateTime;
     }
 
-    public boolean isStatus() {
+    public Integer getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(Integer status) {
         this.status = status;
     }
 
-    public boolean isDelStatus() {
+    public Integer getDelStatus() {
         return delStatus;
     }
 
-    public void setDelStatus(boolean delStatus) {
+    public void setDelStatus(Integer delStatus) {
         this.delStatus = delStatus;
     }
 

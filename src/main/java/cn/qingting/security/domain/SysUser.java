@@ -2,6 +2,7 @@ package cn.qingting.security.domain;
 
 import cn.qingting.core.domain.UserNewEditBean;
 import com.alibaba.fastjson.annotation.JSONField;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -18,13 +19,29 @@ public class SysUser extends UserNewEditBean {
     /**
      * 用户名
      */
+    @NotEmpty(message = "用户名不能为空")
+    @Column(unique = true)
     private String username;
 
     /**
      * 密码
      */
+    @NotEmpty(message = "密码不能为空")
     @JSONField(serialize = false)
     private String password;
+
+    /**
+     * 用户修改密码时,验证用户的密码是否正确
+     */
+    @JSONField(serialize = false)
+    @Transient
+    private String oldPassword;
+
+    /**
+     * 是否是root用户
+     */
+    @JSONField(serialize = false)
+    private Boolean root = false;
 
     /**
      * 盐是用户名+随机数
@@ -87,6 +104,22 @@ public class SysUser extends UserNewEditBean {
         this.password = password;
     }
 
+    public String getOldPassword() {
+        return oldPassword;
+    }
+
+    public void setOldPassword(String oldPassword) {
+        this.oldPassword = oldPassword;
+    }
+
+    public Boolean isRoot() {
+        return root;
+    }
+
+    public void setRoot(Boolean root) {
+        this.root = root;
+    }
+
     public String getSalt() {
         return salt;
     }
@@ -142,4 +175,5 @@ public class SysUser extends UserNewEditBean {
     public void setAllRole(Boolean allRole) {
         this.allRole = allRole;
     }
+
 }

@@ -35,7 +35,7 @@ public class SysMainController extends CRUDController<SysMenu> {
         sortedCondition.put("sequence", "ASC");
         //查询所有状态正常的一级菜单
         List<SysMenu> rootMenu = this.service.queryByProperties(new String[]{ParentChildrenBean.PARENT_FIELD, BaseBean.STATUS_FIELD},
-                new Object[]{null,true},sortedCondition,SysMenu.class);
+                new Object[]{null,1},sortedCondition,SysMenu.class);
         mv.addObject("menus",rootMenu);
         mv.addObject("mainPath",getCurrentUrl());
         mv.addObject("loginPath",getLoginUrl());

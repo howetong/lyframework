@@ -19,9 +19,9 @@ public class ExpandBaseParameter extends BaseParameter{
     private String message;
 
     @JSONField(serialize = false)
-    private Boolean $eq_delStatus;
+    private Integer $eq_delStatus;
     @JSONField(serialize = false)
-    private Boolean $eq_status;
+    private Integer $eq_status;
     @JSONField(serialize = false)
     private String $like_name;
     @JSONField(serialize = false)
@@ -43,19 +43,19 @@ public class ExpandBaseParameter extends BaseParameter{
         this.message = message;
     }
 
-    public Boolean get$eq_delStatus() {
+    public Integer get$eq_delStatus() {
         return $eq_delStatus;
     }
 
-    public void set$eq_delStatus(Boolean $eq_delStatus) {
+    public void set$eq_delStatus(Integer $eq_delStatus) {
         this.$eq_delStatus = $eq_delStatus;
     }
 
-    public Boolean get$eq_status() {
+    public Integer get$eq_status() {
         return $eq_status;
     }
 
-    public void set$eq_status(Boolean $eq_status) {
+    public void set$eq_status(Integer $eq_status) {
         this.$eq_status = $eq_status;
     }
 

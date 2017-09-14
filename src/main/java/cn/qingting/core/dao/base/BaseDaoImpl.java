@@ -979,8 +979,7 @@ public class BaseDaoImpl implements IBaseDao {
         try {
             QueryResult<T> qr = new QueryResult();
             criteria.setProjection(Projections.rowCount());
-            qr.setTotalCount(Long.valueOf(((Number) criteria.uniqueResult())
-                    .longValue()));
+            qr.setTotalCount(Long.valueOf(((Number) criteria.uniqueResult()).longValue()));
             if (qr.getTotalCount().longValue() > 0L) {
                 if ((param.getSortedConditions() != null)
                         && (param.getSortedConditions().size() > 0)) {
@@ -1154,22 +1153,16 @@ public class BaseDaoImpl implements IBaseDao {
         return value.substring(value.indexOf('_', 1) + 1);
     }
 
-    private <T extends BaseBean> void processQuery(Criteria criteria,
-                                                   BaseParameter param, Class<T> entityClass) {
+    private <T extends BaseBean> void processQuery(Criteria criteria, BaseParameter param, Class<T> entityClass) {
         try {
-            Map<String, Object> staticConditionMap = BeanUtils
-                    .describeAvailableParameter(param);
-            Map<String, Object> dynamicConditionMap = param
-                    .getQueryDynamicConditions();
+            Map<String, Object> staticConditionMap = BeanUtils.describeAvailableParameter(param);
+            Map<String, Object> dynamicConditionMap = param.getQueryDynamicConditions();
             Disjunction disjunction = Restrictions.disjunction();
             String prop;
             if ((staticConditionMap != null) && (staticConditionMap.size() > 0)) {
-                for (Map.Entry<String, Object> e : staticConditionMap
-                        .entrySet()) {
+                for (Map.Entry<String, Object> e : staticConditionMap.entrySet()) {
                     Object value = e.getValue();
-                    if ((value != null)
-                            && ((!(value instanceof String)) || (!""
-                            .equals((String) value)))) {
+                    if ((value != null) && ((!(value instanceof String)) || (!"".equals((String) value)))) {
                         prop = getPropName((String) e.getKey());
                         String methodName = getOpt((String) e.getKey());
                         Method m = getMethod(methodName);

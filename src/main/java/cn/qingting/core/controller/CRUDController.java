@@ -36,7 +36,7 @@ public class CRUDController<E extends BaseBean> extends BaseController<E>{
         beforeList(entity);
         ExpandBaseParameter baseParameter = entity;
         //阻止前端提交删除查询条件
-        baseParameter.set$eq_delStatus(false);
+        baseParameter.set$eq_delStatus(0);
         BaseParameter parameter = baseParameter;
         QueryResult<E> queryResult = this.service.doPaginationQuery(parameter,entityClass);
         /**

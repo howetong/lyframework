@@ -5,6 +5,7 @@ import cn.qingting.core.controller.CRUDController;
 import cn.qingting.security.domain.SysUser;
 import cn.qingting.security.service.ISysRoleService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
@@ -23,5 +24,14 @@ public class SysRoleController extends CRUDController<SysUser> {
     public void setRoleService(ISysRoleService service) {
         this.service = service;
         super.service = service;
+    }
+
+    /**
+     * 设置系统管理模块路径
+     */
+    @Override
+    protected void beforeInitBinder(WebDataBinder binder) {
+        super.setModuleDirectoryView("sys");
+        super.beforeInitBinder(binder);
     }
 }

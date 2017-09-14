@@ -1,6 +1,7 @@
 package cn.qingting.security.domain;
 
 import cn.qingting.core.domain.ParentChildrenBean;
+import com.alibaba.fastjson.annotation.JSONField;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -31,9 +32,13 @@ public class SysRole extends ParentChildrenBean<SysRole> {
     @ManyToMany(fetch = FetchType.LAZY,cascade = {CascadeType.REFRESH})
     @JoinTable(name="Sys_Role_User",joinColumns = {@JoinColumn(name="role_id")},inverseJoinColumns = {@JoinColumn(name="user_id")})
     //角色拥有的用户不需要发往前端
+    @JSONField(serialize = false)
     private List<SysUser> users = new ArrayList<>();
 
     private Boolean allAuth = false;
+
+    @JSONField(serialize = false)
+    private Boolean root = false;
 
     public SysRole() {
         super();
@@ -69,5 +74,13 @@ public class SysRole extends ParentChildrenBean<SysRole> {
 
     public void setAllAuth(Boolean allAuth) {
         this.allAuth = allAuth;
+    }
+
+    public Boolean getRoot() {
+        return root;
+    }
+
+    public void setRoot(Boolean root) {
+        this.root = root;
     }
 }

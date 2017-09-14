@@ -93,8 +93,12 @@ fade:淡入淡出效果
 					  if(row.allRole === true){
 							return "所有角色";
 						}else if(value && value.length){
-							return value.length;
-						}
+                          var content = "[";
+                          value.forEach(function(item,index){
+                              content = content + " "+item.name;
+                          });
+                          return value.length +"::"+content + "]";
+                      }
 						return "-";
 				  }
 			  },
